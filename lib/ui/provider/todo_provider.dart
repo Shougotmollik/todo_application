@@ -11,6 +11,12 @@ class TodoProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void todoListStatus(TodoModel todoModel) {
+    final index = _todoList.indexOf(todoModel);
+    _todoList[index].toggleCompleted();
+    notifyListeners();
+  }
+
   void removeTodoList(TodoModel todoModel) {
     final index = _todoList.indexOf(todoModel);
     _todoList.removeAt(index);
