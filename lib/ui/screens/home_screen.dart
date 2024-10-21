@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 borderSide: const BorderSide(
                   width: 16.0,
                 ),
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(8.0),
               )
             ),
           ),
