@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
             decoration: InputDecoration(
               hintText: "Type your todo item...",
               hintStyle: const TextStyle(
-                fontSize: 14,
+                fontSize: 14.0,
                 color: Colors.black54,
               ),
               border: OutlineInputBorder(
