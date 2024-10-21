@@ -1,11 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_application/ui/provider/todo_provider.dart';
 import 'package:todo_application/ui/utils/colors.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final TextEditingController _todoTEController = TextEditingController();
+
+  Future<void> _showDialog() async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          backgroundColor: AppColors.secondaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          icon: const Icon(
+            Icons.edit_calendar,
+            size: 32,
+            color: AppColors.primaryColor,
+          ),
+          title: const Text(
+            "Add Todo Here",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: Colors.black54,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+          content: TextFormField(
+            controller: _todoTEController,
+            decoration: InputDecoration(
+              hintText: "Type your todo item...",
+              hintStyle: const TextStyle(
+                fontSize: 14,
+                color: Colors.black54,
+              ),
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  width: 16.0,
+                ),
+                borderRadius: BorderRadius.circular(12),
+              )
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<TodoProvider>(context);
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: SafeArea(
@@ -21,6 +75,12 @@ class HomeScreen extends StatelessWidget {
                       topLeft: Radius.circular(18),
                       topRight: Radius.circular(18),
                     )),
+                child: ListView.builder(
+                  itemCount: provider.todoList.length,
+                  itemBuilder: (context, index) {
+                    return const ListTile();
+                  },
+                ),
               ),
             )
           ],
@@ -34,7 +94,7 @@ class HomeScreen extends StatelessWidget {
     return FloatingActionButton(
       backgroundColor: AppColors.primaryColor,
       tooltip: "Add Todo",
-      onPressed: () {},
+      onPressed: _showDialog,
       child: const Icon(
         Icons.add,
         color: AppColors.fontColor,
