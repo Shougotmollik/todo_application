@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           icon: const Icon(
             Icons.edit_calendar,
-            size: 32,
+            size: 32.0,
             color: AppColors.primaryColor,
           ),
           title: const Text(
