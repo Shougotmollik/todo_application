@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text(
             "Add Todo Here",
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 24.0,
               fontWeight: FontWeight.w600,
               color: Colors.black54,
               fontStyle: FontStyle.italic,
